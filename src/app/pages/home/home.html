@@ -1,4 +1,17 @@
 <div class="hiq-page">
+  <!-- Добавлен хедер с логотипом и кленовым листом -->
+  <header class="hiq-header">
+    <div class="header-content">
+      <div class="logo-section">
+        <img src="qJr9AbkD.png" alt="home-iq.ca" class="logo" />
+        <span class="logo-text">Home-IQ.ca</span>
+      </div>
+      <div class="flag-section">
+        <img src="sig-blk-en.svg" alt="Canada" class="maple-leaf" />
+      </div>
+    </div>
+  </header>
+
   <div class="hiq-hero">
     <img src="bg-desktop.jpg" alt="Hero" class="hiq-hero-img" />
   </div>
@@ -40,7 +53,7 @@
 
       <!-- Advanced mode fields -->            
       <div *ngIf="activeTab === 'advanced'">
-        <div class="form-row">
+        
           <div class="form-group">
             <label class="input-label">Amortization Period</label>
             <div class="duration-select-group">
@@ -57,22 +70,8 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="input-label">Interest Term</label>
-            <div class="duration-select-group">
-              <select [(ngModel)]="interestTermYears">
-                <option *ngFor="let year of yearsOptions" [value]="year.value">
-                  {{year.label}}
-                </option>
-              </select>
-              <select [(ngModel)]="interestTermMonths">
-                <option *ngFor="let month of monthsOptions" [value]="month.value">
-                  {{month.label}}
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
+          
+        
 
         <div class="form-group">
           <label class="input-label">Payment Frequency</label>
@@ -98,6 +97,25 @@
             <span class="suffix">%</span>
           </div>
         </div>
+
+        
+        <div class="form-group">
+            
+          <label class="input-label">Interest Term</label>
+            <div class="duration-select-group">
+              <select [(ngModel)]="interestTermYears">
+                <option *ngFor="let year of yearsOptions" [value]="year.value">
+                  {{year.label}}
+                </option>
+              </select>
+              <select [(ngModel)]="interestTermMonths">
+                <option *ngFor="let month of monthsOptions" [value]="month.value">
+                  {{month.label}}
+                </option>
+              </select>
+            </div>
+          </div>
+          
       </div>
 
       <button class="hiq-btn" (click)="calculate()">Calculate</button>
