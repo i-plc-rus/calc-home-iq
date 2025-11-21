@@ -67,6 +67,8 @@
 }
 
 .flag-section {
+  margin-left: auto;  // ← вот это прижмёт кленовый лист вправо
+
   .maple-leaf {
     height: 32px;
     width: auto;
@@ -80,6 +82,7 @@
     }
   }
 }
+
 
 .hiq-hero {
   position: relative;
