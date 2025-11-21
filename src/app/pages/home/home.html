@@ -1,27 +1,129 @@
 <div class="hiq-page">
-<div class="hiq-hero">
-<img src="bg-desktop.jpg" alt="Hero" class="hiq-hero-img" />
-</div>
+  <div class="hiq-hero">
+    <img src="bg-desktop.jpg" alt="Hero" class="hiq-hero-img" />
+  </div>
 
+  <div class="hiq-container">
+    <h1 class="hiq-title">Mortgage Payment Calculator</h1>
+    <p class="hiq-subtitle">Quickly See What Your Mortgage Payments Might Look Like</p>
 
-<div class="hiq-container">
-<h1 class="hiq-title">Mortgage Payment Calculator</h1>
-<p class="hiq-subtitle">Quickly See What Your Mortgage Payments Might Look Like</p>
+    <div class="hiq-tabs">
+      <button 
+        [class.active]="activeTab === 'simple'" 
+        (click)="setActiveTab('simple')">
+        Simple
+      </button>
+      <button 
+        [class.active]="activeTab === 'advanced'" 
+        (click)="setActiveTab('advanced')">
+        Advanced
+      </button>
+    </div>
 
+    <div class="hiq-form">
+      <div class="form-group">
+        <label class="input-label">Mortgage Amount</label>
+        <div class="hiq-input-group">
+          <span class="prefix">$</span>
+          <input 
+            type="number" 
+            [(ngModel)]="mortgageAmount" 
+            placeholder="Enter amount" 
+          />
+        </div>
+      </div>
 
-<div class="hiq-tabs">
-<button class="active">Simple</button>
-<button>Advanced</button>
-</div>
+      <!-- Simple mode tip -->
+      <div class="quick-start-tip" *ngIf="activeTab === 'simple'">
+        <p><strong>Quick start tip:</strong> Use the popular selections we've included to help speed up your calculation – a monthly payment at a 5-year fixed interest rate of {{defaultInterestRate}}% amortized over 25 years. Don't worry, you can edit these later.</p>
+      </div>
 
+      <!-- Advanced mode fields -->            
+      <div *ngIf="activeTab === 'advanced'">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="input-label">Amortization Period</label>
+            <div class="duration-select-group">
+              <select [(ngModel)]="amortizationYears">
+                <option *ngFor="let year of yearsOptions" [value]="year.value">
+                  {{year.label}}
+                </option>
+              </select>
+              <select [(ngModel)]="amortizationMonths">
+                <option *ngFor="let month of monthsOptions" [value]="month.value">
+                  {{month.label}}
+                </option>
+              </select>
+            </div>
+          </div>
 
-<div class="hiq-form">
-<label>Mortgage Amount:</label>
-<div class="hiq-input-group">
-<span class="prefix">$</span>
-<input type="number" [(ngModel)]="mortgageAmount" />
-</div>
-<button class="hiq-btn">Calculate</button>
-</div>
-</div>
+          <div class="form-group">
+            <label class="input-label">Interest Term</label>
+            <div class="duration-select-group">
+              <select [(ngModel)]="interestTermYears">
+                <option *ngFor="let year of yearsOptions" [value]="year.value">
+                  {{year.label}}
+                </option>
+              </select>
+              <select [(ngModel)]="interestTermMonths">
+                <option *ngFor="let month of monthsOptions" [value]="month.value">
+                  {{month.label}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="input-label">Payment Frequency</label>
+          <select [(ngModel)]="paymentFrequency">
+            <option *ngFor="let option of frequencyOptions" [value]="option.value">
+              {{option.label}}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="input-label">Interest Rate (%)</label>
+          <div class="hiq-input-group">
+            <input 
+              type="number" 
+              [(ngModel)]="interestRate" 
+              (input)="formatInterestRate()"
+              placeholder="0.000"
+              step="0.001"
+              min="0"
+              max="100"
+            />
+            <span class="suffix">%</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="hiq-btn" (click)="calculate()">Calculate</button>
+
+      <div class="results-section" *ngIf="showResults">
+        <div class="result-item">
+          <span class="result-label">Payment Amount</span>
+          <span class="result-value">${{paymentAmount | number:'1.2-2'}}</span>
+        </div>
+        <div class="result-item" *ngIf="paymentFrequency">
+          <span class="result-label">Payment Frequency</span>
+          <span class="result-value">{{getFrequencyLabel()}}</span>
+        </div>
+        <div class="result-item" *ngIf="activeTab === 'advanced'">
+          <span class="result-label">Interest Rate</span>
+          <span class="result-value">{{interestRate | number:'1.3-3'}}%</span>
+        </div>
+        <div class="result-item" *ngIf="activeTab === 'advanced'">
+          <span class="result-label">Total Amortization</span>
+          <span class="result-value">{{getTotalAmortization()}}</span>
+        </div>
+        <div class="result-item" *ngIf="activeTab === 'advanced'">
+          <span class="result-label">Interest Term</span>
+          <span class="result-value">{{getInterestTerm()}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

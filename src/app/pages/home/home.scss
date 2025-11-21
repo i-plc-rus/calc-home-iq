@@ -1,99 +1,325 @@
-
 .hiq-page {
-  font-family: Arial, sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   background: #f7f7f7;
+  min-height: 100vh;
+}
+
+.hiq-hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  
+  @media (max-width: 768px) {
+    height: 300px;
+  }
+  
+  @media (max-width: 480px) {
+    height: 200px;
+  }
 }
 
 .hiq-hero-img {
   width: 100%;
-  max-height: 300px;
+  height: 100%;
   object-fit: cover;
 }
 
 .hiq-container {
   max-width: 600px;
-  margin: 20px auto;
+  margin: -80px auto 40px;
   background: #fff;
-  padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  
+  @media (max-width: 768px) {
+    margin: -60px 20px 40px;
+    padding: 30px;
+  }
+  
+  @media (max-width: 480px) {
+    margin: -40px 16px 32px;
+    padding: 24px;
+    border-radius: 8px;
+  }
 }
 
 .hiq-title {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 32px;
+  font-weight: 700;
   margin-bottom: 8px;
+  color: #1a1a1a;
+  
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 }
 
 .hiq-subtitle {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 20px;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 32px;
+  line-height: 1.5;
+  
+  @media (max-width: 480px) {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
 }
 
 .hiq-tabs {
   display: flex;
-  border-bottom: 1px solid #dcdcdc;
-  margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 32px;
+  gap: 8px;
+
+  @media (max-width: 480px) {
+    margin-bottom: 24px;
+  }
 
   button {
-    flex: 1;
-    padding: 12px;
+    flex: none;
+    padding: 12px 24px;
     background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+
+    @media (max-width: 480px) {
+      padding: 10px 16px;
+      font-size: 14px;
+    }
 
     &.active {
-      border-bottom: 3px solid #007aff;
+      color: #007aff;
+      border-bottom-color: #007aff;
       font-weight: 600;
     }
+
+    &:hover:not(.active) {
+      color: #333;
+      border-bottom-color: #ccc;
+    }
+  }
+}
+
+.quick-start-tip {
+  background: #f0f7ff;
+  border: 1px solid #d0e3ff;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  strong {
+    color: #007aff;
   }
 }
 
 .hiq-form {
   display: flex;
   flex-direction: column;
+  gap: 24px;
+
+  @media (max-width: 480px) {
+    gap: 20px;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
 
-  label {
-    font-size: 14px;
-    font-weight: 600;
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
 }
 
 .hiq-input-group {
   display: flex;
-  border: 1px solid #d1d1d1;
-  border-radius: 4px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
   overflow: hidden;
+  transition: border-color 0.3s ease;
+  background: #fff;
+
+  &:focus-within {
+    border-color: #007aff;
+  }
+
+  .prefix, .suffix {
+    background: #f8f9fa;
+    padding: 12px 16px;
+    color: #666;
+    font-weight: 500;
+    border: none;
+  }
 
   .prefix {
-    background: #f2f2f2;
-    padding: 10px 14px;
-    border-right: 1px solid #d1d1d1;
+    border-right: 1px solid #e0e0e0;
+  }
+
+  .suffix {
+    border-left: 1px solid #e0e0e0;
   }
 
   input {
     flex: 1;
-    padding: 10px;
+    padding: 12px 16px;
     border: none;
     outline: none;
     font-size: 16px;
+    color: #333;
+    background: transparent;
+
+    &::placeholder {
+      color: #999;
+    }
+
+    @media (max-width: 480px) {
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+  }
+}
+
+.duration-select-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: stretch;
+
+  select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: #007aff;
+    }
+
+    @media (max-width: 480px) {
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+  }
+}
+
+// Новый стиль для одиночных duration-select-group (когда в form-row только один элемент)
+.form-row:has(.form-group:only-child) .duration-select-group {
+  grid-template-columns: 1fr 1fr;
+  max-width: 100%;
+}
+
+// Стиль для выравнивания когда два элемента в строке
+.form-row:has(.form-group:not(:only-child)) .duration-select-group {
+  grid-template-columns: 1fr 1fr;
+}
+
+select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #007aff;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 12px;
+    font-size: 14px;
   }
 }
 
 .hiq-btn {
-  padding: 12px;
+  padding: 16px 32px;
   background: #007aff;
   color: #fff;
   border: none;
-  font-size: 16px;
-  border-radius: 4px;
-  cursor: pointer;
+  font-size: 18px;
   font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 8px;
 
   &:hover {
-    background: #005fcc;
+    background: #0056cc;
+  }
+
+  @media (max-width: 480px) {
+    padding: 14px 24px;
+    font-size: 16px;
+  }
+}
+
+.results-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.result-label {
+  font-size: 16px;
+  color: #666;
+}
+
+.result-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #007aff;
+  
+  @media (max-width: 480px) {
+    font-size: 20px;
   }
 }
