@@ -1,1 +1,16 @@
-<p>categories works!</p>
+<!-- categories.component.html -->
+<section class="container categories-section">
+  <h2>Find Trusted Real Estate Professionals</h2>
+  <div class="categories-grid">
+    <div class="category-card" *ngFor="let category of categories">
+      <div class="category-image">
+        <img [src]="category.image" [alt]="category.title">
+      </div>
+      <div class="category-content">
+        <div class="category-title">{{ category.title }}</div>
+        <div class="category-description">{{ category.description }}</div>
+        <a href="#" class="read-more">{{ category.linkText }}</a>
+      </div>
+    </div>
+  </div>
+</section>
