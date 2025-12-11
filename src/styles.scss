@@ -1,1 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.scss */
+:root {
+  /* Colors */
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary: #64748B;
+  --border: #E2E8F0;
+  --bg-light: #F8FAFC;
+  --bg-gray: #F1F5F9;
+  --white: #FFFFFF;
+  
+  /* Typography */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --h1-size: 44px;
+  --h2-size: 32px;
+  --h3-size: 24px;
+  --body-large-size: 18px;
+  --body-size: 16px;
+  --caption-size: 14px;
+  
+  /* Spacing */
+  --page-padding: 80px;
+  --section-gap: 80px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background-color: var(--bg-light);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--page-padding);
+}
+
+.button-primary {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  
+  &:hover {
+    background: var(--primary-hover);
+  }
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: var(--primary);
+    color: var(--white);
+  }
+}
+
+.read-more {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--caption-size);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  :root {
+    --page-padding: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding: 20px;
+    --h1-size: 36px;
+    --h2-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --h1-size: 28px;
+    --h2-size: 24px;
+  }
+}

@@ -1,0 +1,20 @@
+<!-- header.component.html -->
+<header class="header">
+  <div class="header-container">
+    <div class="logo">HomeIQ</div>
+    
+    <button class="mobile-menu-btn" (click)="toggleMenu()">☰</button>
+    
+    <nav class="nav" [class.active]="isMenuOpen">
+      <ul>
+        <li><a href="#" (click)="closeMenu()">Mortgage Rates</a></li>
+        <li><a href="#" (click)="closeMenu()">Professionals</a></li>                    
+        <li><a href="#" (click)="closeMenu()">Blog</a></li>
+      </ul>
+    </nav>
+    
+    <div class="header-cta">
+      <button class="button-primary">Find a Professional</button>
+    </div>
+  </div>
+</header>
