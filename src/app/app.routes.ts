@@ -3,5 +3,6 @@ import { Home } from './pages/home/home';
 
 export const routes: Routes = [{
     path: '',
-    component: Home
+    //component: Home
+    loadComponent: () => import('./app').then(m => m.App)
   }];

@@ -11,7 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
-  //RouterOutlet
+  standalone: true,
   imports: [CommonModule, Header, Hero, Rates, Categories, Blog, Footer],
   templateUrl: './app.html',
   styleUrl: './app.scss'
