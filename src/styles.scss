@@ -1,6 +1,6 @@
-/* styles.scss */
+/* styles.scss - обновляем глобальные переменные и стили */
 :root {
-  /* Colors */
+  /* Colors (добавляем новые) */
   --primary: #2563EB;
   --primary-hover: #1D4ED8;
   --text-primary: #0F172A;
@@ -11,11 +11,24 @@
   --bg-gray: #F1F5F9;
   --white: #FFFFFF;
   
+  /* Новые цвета для страховых брокеров */
+  --warning-bg: #FFF7ED;
+  --warning-border: #F97316;
+  --warning-text: #9A3412;
+  --warning-text-dark: #7C2D12;
+  --info-bg: #F0F9FF;
+  --info-border: #BAE6FD;
+  --danger-bg: #FEF2F2;
+  --danger-border: #DC2626;
+  --danger-text: #7F1D1D;
+  --success: #10B981;
+  
   /* Typography */
   --font-family: 'Inter', system-ui, -apple-system, sans-serif;
   --h1-size: 44px;
   --h2-size: 32px;
   --h3-size: 24px;
+  --h4-size: 20px;
   --body-large-size: 18px;
   --body-size: 16px;
   --caption-size: 14px;
@@ -44,6 +57,7 @@ body {
   padding: 0 var(--page-padding);
 }
 
+/* Общие стили для всех страниц */
 .button-primary {
   background: var(--primary);
   color: var(--white);
@@ -54,6 +68,9 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   flex-shrink: 0;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
   
   &:hover {
     background: var(--primary-hover);
@@ -76,18 +93,7 @@ body {
   }
 }
 
-.read-more {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: var(--caption-size);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: gap 0.2s;
-}
-
-/* Responsive Styles */
+/* Адаптивные стили */
 @media (max-width: 1200px) {
   :root {
     --page-padding: 40px;
@@ -99,6 +105,7 @@ body {
     --page-padding: 20px;
     --h1-size: 36px;
     --h2-size: 28px;
+    --h3-size: 20px;
   }
 }
 
@@ -106,5 +113,7 @@ body {
   :root {
     --h1-size: 28px;
     --h2-size: 24px;
+    --h3-size: 18px;
+    --h4-size: 16px;
   }
 }

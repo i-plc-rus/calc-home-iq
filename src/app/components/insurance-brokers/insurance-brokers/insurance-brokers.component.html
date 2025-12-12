@@ -1,0 +1,57 @@
+<!-- components/insurance-brokers/insurance-brokers.component.html -->
+<app-header></app-header>
+
+<app-insurance-brokers-hero></app-insurance-brokers-hero>
+
+<!-- Top Insurance Brokers Section -->
+<section class="top-brokers-section">
+  <div class="container">
+    <h3>Our Top Insurance Broker Picks</h3>
+    
+    <div class="intro-content">
+      <p>Each insurance broker below has been carefully selected based on their expertise in property insurance, client satisfaction, and proven track record in Calgary's real estate market.</p>
+    </div>
+    
+    <div class="broker-cards-grid">
+      <app-broker-card 
+        *ngFor="let broker of brokers; let last = last"
+        [broker]="broker"
+        [showDivider]="!last">
+      </app-broker-card>
+    </div>
+  </div>
+</section>
+
+<app-benefits-grid></app-benefits-grid>
+
+<!-- Ready to Get Started Section -->
+<section class="ready-section">
+  <div class="container">
+    <h2>🚀 Ready to Get Started?</h2>
+    <p>You can confidently contact any of the insurance brokers listed above—these recommendations are independent and uncompensated.</p>
+    <p style="margin-top: 20px;">Before committing to a policy, return to Home IQ and confirm how insurance affects your numbers:</p>
+  </div>
+</section>
+
+<!-- Tools Section -->
+<section class="tools-section">
+  <div class="container">
+    <h2>🔧 Popular Tools for Homeowners & Investors</h2>
+    <p>Use our tools to make smarter, more confident real-estate decisions—including how insurance impacts your investments.</p>
+    
+    <div class="tools-grid">
+      <div class="tool-card" [class.special-tool]="tool.isSpecial" *ngFor="let tool of tools">
+        <h3>{{ tool.name }}</h3>
+        <p>{{ tool.description }}</p>
+        <a href="#" class="button-primary">Calculate Now</a>
+      </div>
+    </div>
+    
+    <div class="final-cta">
+      <p>👉 Use our tools to make smarter, more confident real-estate decisions—before you commit to any property.</p>
+      <a routerLink="/" class="button-primary">Explore All Tools</a>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

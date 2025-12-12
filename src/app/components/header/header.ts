@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class Header {
   isMenuOpen = false;
+  isMobileMenuOpen = false;
   
   constructor(private router: Router) {}
 
@@ -19,6 +20,11 @@ export class Header {
 
   closeMenu() {
     this.isMenuOpen = false;
+    this.isMobileMenuOpen = false;
+  }
+
+   toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
 
