@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, HostListener, AfterViewInit } from '@angular/core';
 
 export interface Category {
   title: string;
@@ -10,64 +10,68 @@ export interface Category {
 
 @Component({
   selector: 'app-categories',
-  imports: [CommonModule,],
+  imports: [CommonModule],
   templateUrl: './categories.html',
   styleUrl: './categories.scss',
 })
-export class Categories {
+export class Categories implements AfterViewInit {
+
   @ViewChild('findTrustedSection') ratesSection!: ElementRef;
 
-   categories: Category[] = [
-    {
-      title: 'Mortgage Brokers',
-      description: 'Compare rates and find the best financing options for your home purchase.',
-      image: 'photo-1554224155-6726b3ff858f.avif',
-      linkText: 'View Brokers →'
-    },
-    {
-      title: 'Lawyers',
-      description: 'Legal experts for contracts, titles, and smooth real estate transactions.',
-      image: 'photo-1589829545856-d10d557cf95f.avif',
-      linkText: 'View Lawyers →'
-    },
-    {
-      title: 'Inspectors',
-      description: 'Thorough home inspections to identify issues before you buy.',
-      image: 'photo-1585128792020-803d29415281.avif',
-      linkText: 'View Inspectors →'
-    },
-    {
-      title: 'Renovation Companies',
-      description: 'Transform your property with trusted renovation and remodeling experts.',
-      image: 'photo-1560520031-3a4dc4e9de0c.avif',
-      linkText: 'View Companies →'
-    },
-    {
-      title: 'Property Managers',
-      description: 'Professional management for rental properties and investment units.',
-      image: 'photo-1560518883-ce09059eeffa.avif',
-      linkText: 'View Managers →'
-    },
-    {
-      title: 'Insurance Brokers',
-      description: 'Top 3 Insurance Brokers in Calgary – Trusted Coverage for Homeowners & Real Estate Investors.',
-      image: 'photo-1554224155-6726b3ff858f.avif',
-      linkText: 'View Brokers →'
-    }
+  currentIndex = 0;
+  chunkedCategories: Category[][] = [];
+
+  categories: Category[] = [
+    { title: 'Mortgage Brokers', description: 'Compare rates...', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View Brokers →' },
+    { title: 'Lawyers', description: 'Legal experts...', image: 'photo-1589829545856-d10d557cf95f.avif', linkText: 'View Lawyers →' },
+    { title: 'Inspectors', description: 'Thorough inspection...', image: 'photo-1585128792020-803d29415281.avif', linkText: 'View Inspectors →' },
+    { title: 'Renovation Companies', description: 'Transform your property...', image: 'photo-1560520031-3a4dc4e9de0c.avif', linkText: 'View Companies →' },
+    { title: 'Property Managers', description: 'Professional management...', image: 'photo-1560518883-ce09059eeffa.avif', linkText: 'View Managers →' },
+    { title: 'Insurance Brokers', description: 'Top insurance brokers...', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View Brokers →' },
+
+    /* NEW */
+    { title: 'Electrical Companies', description: 'Licensed electricians', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' },
+    { title: 'Pest Control', description: 'Protect your home', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' },
+    { title: 'Real Estate Appraisal Firms', description: 'Professional appraisers', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' },
   ];
 
+  constructor() {
+    this.chunkCategories();
+  }
 
-  // Обработчик якорных ссылок
-  @HostListener('window:hashchange', ['$event'])
-  onHashChange(event: HashChangeEvent) {
+  chunkCategories() {
+    const size = 6;
+    this.chunkedCategories = [];
+
+    for (let i = 0; i < this.categories.length; i += size) {
+      this.chunkedCategories.push(this.categories.slice(i, i + size));
+    }
+  }
+
+  nextSlide() {
+    if (this.currentIndex < this.chunkedCategories.length - 1) {
+      this.currentIndex++;
+    }
+  }
+
+  prevSlide() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    }
+  }
+
+  goTo(index: number) {
+    this.currentIndex = index;
+  }
+
+  // anchor handling
+  @HostListener('window:hashchange')
+  onHashChange() {
     this.scrollToHash();
   }
 
   ngAfterViewInit() {
-    // Проверяем хэш при загрузке компонента
-    setTimeout(() => {
-      this.scrollToHash();
-    }, 100);
+    setTimeout(() => this.scrollToHash(), 100);
   }
 
   private scrollToHash() {
@@ -77,13 +81,9 @@ export class Categories {
   }
 
   scrollToSection() {
-    if (this.ratesSection) {
-      this.ratesSection.nativeElement.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
-      });
-    }
+    this.ratesSection?.nativeElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   }
-
-
 }
