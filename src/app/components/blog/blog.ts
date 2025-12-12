@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 export interface BlogPost {
   title: string;
@@ -17,6 +17,8 @@ export interface BlogPost {
   styleUrl: './blog.scss',
 })
 export class Blog {
+  
+  @ViewChild('smartGuidesSection') ratesSection!: ElementRef;
 
   blogPosts: BlogPost[] = [
     {
@@ -38,5 +40,34 @@ export class Blog {
       category: 'Legal'
     }
   ];
+
+  // Обработчик якорных ссылок
+  @HostListener('window:hashchange', ['$event'])
+  onHashChange(event: HashChangeEvent) {
+    this.scrollToHash();
+  }
+
+  ngAfterViewInit() {
+    // Проверяем хэш при загрузке компонента
+    setTimeout(() => {
+      this.scrollToHash();
+    }, 100);
+  }
+
+  private scrollToHash() {
+    if (window.location.hash === '#smart-guides') {
+      this.scrollToSection();
+    }
+  }
+
+  scrollToSection() {
+    if (this.ratesSection) {
+      this.ratesSection.nativeElement.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  }
+
 
 }

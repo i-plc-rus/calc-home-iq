@@ -41,5 +41,42 @@ export class Header {
     });
   }
 
+  scrollToFindTrusted(event: Event) {
+    event.preventDefault();
+    this.closeMenu();
+    
+    // Переходим на главную страницу, если не на ней
+    this.router.navigate(['/']).then(() => {
+      // Ждем небольшое время для рендера контента
+      setTimeout(() => {
+        const findTrustedSection = document.getElementById('find-trusted');
+        if (findTrustedSection) {
+          findTrustedSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }
+      }, 100);
+    });
+  }
+
+scrollToSmartGuides(event: Event) {
+    event.preventDefault();
+    this.closeMenu();
+    
+    // Переходим на главную страницу, если не на ней
+    this.router.navigate(['/']).then(() => {
+      // Ждем небольшое время для рендера контента
+      setTimeout(() => {
+        const smartGuidesSection = document.getElementById('smart-guides');
+        if (smartGuidesSection) {
+          smartGuidesSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }
+      }, 100);
+    });
+  }
 
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 
 export interface Category {
   title: string;
@@ -15,6 +15,7 @@ export interface Category {
   styleUrl: './categories.scss',
 })
 export class Categories {
+  @ViewChild('findTrustedSection') ratesSection!: ElementRef;
 
    categories: Category[] = [
     {
@@ -54,5 +55,35 @@ export class Categories {
       linkText: 'View Brokers →'
     }
   ];
+
+
+  // Обработчик якорных ссылок
+  @HostListener('window:hashchange', ['$event'])
+  onHashChange(event: HashChangeEvent) {
+    this.scrollToHash();
+  }
+
+  ngAfterViewInit() {
+    // Проверяем хэш при загрузке компонента
+    setTimeout(() => {
+      this.scrollToHash();
+    }, 100);
+  }
+
+  private scrollToHash() {
+    if (window.location.hash === '#find-trusted') {
+      this.scrollToSection();
+    }
+  }
+
+  scrollToSection() {
+    if (this.ratesSection) {
+      this.ratesSection.nativeElement.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  }
+
 
 }
