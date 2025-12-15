@@ -1,19 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Header } from '../../header/header';
-import { Footer } from '../../footer/footer';
-import { InsuranceBrokersHeroComponent } from '../insurance-brokers-hero/insurance-brokers-hero';
-import { Broker, BrokerCardComponent } from '../broker-card/broker-card';
-import { BenefitsGridComponent } from '../benefits-grid/benefits-grid';
+import { InsuranceBrokersHeroComponent } from './insurance-brokers-hero/insurance-brokers-hero';
+import { Broker, BrokerCardComponent } from './broker-card/broker-card';
+import { BenefitsGridComponent } from './benefits-grid/benefits-grid';
 
 @Component({
   selector: 'app-insurance-brokers.component',
   imports: [
     CommonModule,
-    RouterModule,
-    Header,
-    Footer,
+    RouterModule,   
     InsuranceBrokersHeroComponent,
     BrokerCardComponent,
     BenefitsGridComponent
