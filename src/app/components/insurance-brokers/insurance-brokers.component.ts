@@ -4,16 +4,18 @@ import { RouterModule } from '@angular/router';
 import { InsuranceBrokersHeroComponent } from './insurance-brokers-hero/insurance-brokers-hero';
 import { Broker, BrokerCardComponent } from './broker-card/broker-card';
 import { BenefitsGridComponent } from './benefits-grid/benefits-grid';
+import { ToolsSectionComponent } from "../../pages/share/tools-section/tools-section.component";
 
 @Component({
   selector: 'app-insurance-brokers.component',
   imports: [
     CommonModule,
-    RouterModule,   
+    RouterModule,
     InsuranceBrokersHeroComponent,
     BrokerCardComponent,
-    BenefitsGridComponent
-  ],
+    BenefitsGridComponent,
+    ToolsSectionComponent
+],
   templateUrl: './insurance-brokers.component.html',
   styleUrl: './insurance-brokers.component.scss',
 })
@@ -61,31 +63,5 @@ brokers: Broker[] = [
     }
   ];
 
-  tools = [
-    {
-      name: 'Investment Property Calculator',
-      description: 'See how insurance impacts cashflow and ROI for investment properties',
-      isSpecial: false
-    },
-    {
-      name: 'Insurance Impact Analyzer',
-      description: 'Compare different insurance scenarios and their effect on your bottom line',
-      isSpecial: true
-    },
-    {
-      name: 'Renovation ROI Estimator',
-      description: 'Confirm if upgrades justify insurance increases and potential savings',
-      isSpecial: false
-    },
-    {
-      name: 'Mortgage Penalty Estimator',
-      description: 'Understand refinancing timing risks and insurance implications',
-      isSpecial: false
-    },
-    {
-      name: 'Purchase-vs-Rent Analyzer',
-      description: 'Evaluate long-term ownership costs including insurance premiums',
-      isSpecial: false
-    }
-  ];
+  
 }

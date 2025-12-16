@@ -1,5 +1,5 @@
 <!-- components/insurance-brokers/insurance-brokers.component.html -->
-
+<!-- w16 -->
 <app-insurance-brokers-hero></app-insurance-brokers-hero>
 
 <!-- Top Insurance Brokers Section -->
@@ -32,23 +32,10 @@
   </div>
 </section>
 
+
 <!-- Tools Section -->
-<section class="tools-section">
-  <div class="container">
-    <h2>🔧 Popular Tools for Homeowners & Investors</h2>
-    <p>Use our tools to make smarter, more confident real-estate decisions—including how insurance impacts your investments.</p>
-    
-    <div class="tools-grid">
-      <div class="tool-card" [class.special-tool]="tool.isSpecial" *ngFor="let tool of tools">
-        <h3>{{ tool.name }}</h3>
-        <p>{{ tool.description }}</p>
-        <a href="#" class="button-primary">Calculate Now</a>
-      </div>
-    </div>
-    
-    <div class="final-cta">
-      <p>👉 Use our tools to make smarter, more confident real-estate decisions—before you commit to any property.</p>
-      <a routerLink="/" class="button-primary">Explore All Tools</a>
-    </div>
-  </div>
-</section>
+<app-tools-section 
+  variant="insurance"
+  title="🔧 Popular Tools for Homeowners & Investors"
+  description="Use our tools to make smarter, more confident real-estate decisions—including how insurance impacts your investments.">
+</app-tools-section>
