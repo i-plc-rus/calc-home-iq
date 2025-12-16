@@ -78,7 +78,18 @@ export const routes: Routes = [{
       import('./pages/mortgage-strategies/mortgage-strategies.component')
         .then(m => m.MortgageStrategies)  
   },
-
+{ 
+    path: 'w23',
+    loadComponent: () =>       
+      import('./pages/mortgage-penalties/mortgage-penalties.component')
+        .then(m => m.MortgagePenaltiesComponent)
+  },
+  { 
+    path: 'mortgage-penalties',
+    loadComponent: () =>       
+      import('./pages/mortgage-penalties/mortgage-penalties.component')
+        .then(m => m.MortgagePenaltiesComponent)
+  },
   
 
 ];
