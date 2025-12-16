@@ -7,13 +7,15 @@ export const routes: Routes = [{
     loadComponent: () => import('./pages/home/home').then(m => m.Home)
   },
   {
-    path: 'insurance-brokers',    
-    loadComponent: () => import('./components/insurance-brokers/insurance-brokers.component').then(m => m.InsuranceBrokersComponent)
-  },
-  {
     path: 'w16',    
     loadComponent: () => import('./components/insurance-brokers/insurance-brokers.component').then(m => m.InsuranceBrokersComponent)
   },
+
+  {
+    path: 'insurance-brokers',    
+    loadComponent: () => import('./components/insurance-brokers/insurance-brokers.component').then(m => m.InsuranceBrokersComponent)
+  },
+  
   { 
     path: 'w17',
     loadComponent: () =>       
@@ -60,7 +62,7 @@ export const routes: Routes = [{
         .then(m => m.ChooseRealtorGuide)
   },
   { 
-    path: 'appraisal-firms',
+    path: 'choose-realtor-guide',
     loadComponent: () =>       
       import('./pages/choose-realtor-guide/choose-realtor-guide.component')
         .then(m => m.ChooseRealtorGuide)        
@@ -116,6 +118,46 @@ export const routes: Routes = [{
     loadComponent: () =>       
       import('./pages/home-insurance/home-insurance.component')
         .then(m => m.HomeInsuranceComponent)
+  },
+
+
+  { 
+    path: 'w26',
+    loadComponent: () =>       
+      import('./pages/landlord-insurance/landlord-insurance.component')
+        .then(m => m.LandlordInsuranceComponent)
+  },
+  { 
+    path: 'landlord-insurance',
+    loadComponent: () =>       
+      import('./pages/landlord-insurance/landlord-insurance.component')
+        .then(m => m.LandlordInsuranceComponent)
+  },
+
+  { 
+    path: 'w31',
+    loadComponent: () =>       
+      import('./pages/about/about.component')
+        .then(m => m.AboutComponent)
+  },
+  { 
+    path: 'about',
+    loadComponent: () =>       
+      import('./pages/about/about.component')
+        .then(m => m.AboutComponent)
+  },
+
+  { 
+    path: 'w37',
+    loadComponent: () =>       
+      import('./pages/privacy/privacy.component')
+        .then(m => m.PrivacyComponent)
+  },
+  { 
+    path: 'privacy',
+    loadComponent: () =>       
+      import('./pages/privacy/privacy.component')
+        .then(m => m.PrivacyComponent)
   },
   
 

@@ -1,18 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 export interface BlogPost {
   title: string;
   excerpt: string;
   image: string;
   category: string;
+  route?: string;
 }
 
 
 
 @Component({
   selector: 'app-blog',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './blog.html',
   styleUrl: './blog.scss',
 })
@@ -25,19 +27,22 @@ export class Blog {
       title: 'How to Choose a Realtor in Calgary',
       excerpt: 'Learn what to look for when selecting the right real estate professional...',
       image: 'photo-1560518883-ce09059eeffa (1).avif',
-      category: 'Buying Guide'
+      category: 'Buying Guide',
+      route: '/choose-realtor-guide'
     },
     {
       title: 'Best Mortgage Strategies in 2025',
       excerpt: 'Current market trends and smart financing approaches for home buyers...',
       image: 'photo-1560520031-3a4dc4e9de0c.avif',
-      category: 'Financing'
+      category: 'Financing',
+      route: '/mortgage-strategies'
     },
     {
       title: 'Legal Fees & Penalties Explained',
       excerpt: 'Understanding closing costs and potential penalties in real estate transactions...',
       image: 'photo-1560448204-603b3fc33ddc.avif',
-      category: 'Legal'
+      category: 'Legal',
+      route: '/mortgage-penalties'
     }
   ];
 

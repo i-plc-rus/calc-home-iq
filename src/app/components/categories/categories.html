@@ -16,14 +16,14 @@
       >
         <div class="carousel-slide" *ngFor="let chunk of chunkedCategories">
           <div class="categories-grid">
-            <div class="category-card" *ngFor="let category of chunk">
+            <div class="category-card" *ngFor="let category of chunk" [routerLink]="category.route">
               <div class="category-image">
                 <img [src]="category.image" [alt]="category.title">
               </div>
               <div class="category-content">
                 <div class="category-title">{{ category.title }}</div>
                 <div class="category-description">{{ category.description }}</div>
-                <a href="#" class="read-more">{{ category.linkText }}</a>
+                <span class="read-more">{{ category.linkText }}</span>
               </div>
             </div>
           </div>

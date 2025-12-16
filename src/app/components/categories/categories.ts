@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild, HostListener, AfterViewInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 export interface Category {
   title: string;
   description: string;
   image: string;
   linkText: string;
+  route?: string;
 }
 
 @Component({
   selector: 'app-categories',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './categories.html',
   styleUrl: './categories.scss',
 })
@@ -27,12 +29,12 @@ export class Categories implements AfterViewInit {
     { title: 'Inspectors', description: 'Thorough inspection...', image: 'photo-1585128792020-803d29415281.avif', linkText: 'View Inspectors →' },
     { title: 'Renovation Companies', description: 'Transform your property...', image: 'photo-1560520031-3a4dc4e9de0c.avif', linkText: 'View Companies →' },
     { title: 'Property Managers', description: 'Professional management...', image: 'photo-1560518883-ce09059eeffa.avif', linkText: 'View Managers →' },
-    { title: 'Insurance Brokers', description: 'Top insurance brokers...', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View Brokers →' },
+    { title: 'Insurance Brokers', description: 'Top insurance brokers...', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View Brokers →' , route: '/insurance-brokers'},
 
     /* NEW */
-    { title: 'Electrical Companies', description: 'Licensed electricians', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' },
-    { title: 'Pest Control', description: 'Protect your home', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' },
-    { title: 'Real Estate Appraisal Firms', description: 'Professional appraisers', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' },
+    { title: 'Electrical Companies', description: 'Licensed electricians', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' , route:'electrical-companies'},
+    { title: 'Pest Control', description: 'Protect your home', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' , route:'pest-control'},
+    { title: 'Real Estate Appraisal Firms', description: 'Professional appraisers', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' , route:'appraisal-firms'},
   ];
 
   constructor() {
