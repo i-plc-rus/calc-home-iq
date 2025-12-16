@@ -90,6 +90,33 @@ export const routes: Routes = [{
       import('./pages/mortgage-penalties/mortgage-penalties.component')
         .then(m => m.MortgagePenaltiesComponent)
   },
+
+
+  { 
+    path: 'w24',
+    loadComponent: () =>       
+      import('./pages/legal-fees/legal-fees.component')
+        .then(m => m.LegalFeesComponent)
+  },
+  { 
+    path: 'legal-fees',
+    loadComponent: () =>       
+      import('./pages/legal-fees/legal-fees.component')
+        .then(m => m.LegalFeesComponent)
+  },
+
+  { 
+    path: 'w25',
+    loadComponent: () =>       
+      import('./pages/home-insurance/home-insurance.component')
+        .then(m => m.HomeInsuranceComponent)
+  },
+  { 
+    path: 'home-insurance',
+    loadComponent: () =>       
+      import('./pages/home-insurance/home-insurance.component')
+        .then(m => m.HomeInsuranceComponent)
+  },
   
 
 ];
