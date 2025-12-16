@@ -40,4 +40,45 @@ export const routes: Routes = [{
         .then(m => m.PestControl)
   },
 
+  { 
+    path: 'w19',
+    loadComponent: () =>       
+      import('./pages/appraisal-firms/appraisal-firms.component')
+        .then(m => m.AppraisalFirms)
+  },
+  { 
+    path: 'appraisal-firms',
+    loadComponent: () =>       
+      import('./pages/appraisal-firms/appraisal-firms.component')
+        .then(m => m.AppraisalFirms)
+  },
+
+  { 
+    path: 'w21',
+    loadComponent: () =>       
+      import('./pages/choose-realtor-guide/choose-realtor-guide.component')
+        .then(m => m.ChooseRealtorGuide)
+  },
+  { 
+    path: 'appraisal-firms',
+    loadComponent: () =>       
+      import('./pages/choose-realtor-guide/choose-realtor-guide.component')
+        .then(m => m.ChooseRealtorGuide)        
+  },
+
+  { 
+    path: 'w22',
+    loadComponent: () =>       
+      import('./pages/mortgage-strategies/mortgage-strategies.component')
+        .then(m => m.MortgageStrategies)
+  },
+  { 
+    path: 'mortgage-strategies',
+    loadComponent: () =>       
+      import('./pages/mortgage-strategies/mortgage-strategies.component')
+        .then(m => m.MortgageStrategies)  
+  },
+
+  
+
 ];
