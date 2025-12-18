@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
@@ -13,6 +13,17 @@ export class Header {
   
   constructor(private router: Router) {}
 
+  // Закрытие меню при клике вне его области
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+    const isClickInsideNav = target.closest('.nav');
+    const isClickInsideMenuBtn = target.closest('.mobile-menu-btn');
+    
+    if (!isClickInsideNav && !isClickInsideMenuBtn && this.isMenuOpen) {
+      this.closeMenu();
+    }
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -20,69 +31,60 @@ export class Header {
 
   closeMenu() {
     this.isMenuOpen = false;
-    this.isMobileMenuOpen = false;
   }
-
-   toggleMobileMenu() {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-  }
-
 
   scrollToRates(event: Event) {
     event.preventDefault();
     this.closeMenu();
     
-    // Переходим на главную страницу, если не на ней
-    this.router.navigate(['/']).then(() => {
-      // Ждем небольшое время для рендера контента
-      setTimeout(() => {
-        const ratesSection = document.getElementById('mortgage-rates');
-        if (ratesSection) {
-          ratesSection.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-        }
-      }, 100);
-    });
+    if (this.router.url !== '/') {
+      this.router.navigate(['/']).then(() => {
+        this.scrollToSection('mortgage-rates');
+      });
+    } else {
+      this.scrollToSection('mortgage-rates');
+    }
   }
 
   scrollToFindTrusted(event: Event) {
     event.preventDefault();
     this.closeMenu();
     
-    // Переходим на главную страницу, если не на ней
-    this.router.navigate(['/']).then(() => {
-      // Ждем небольшое время для рендера контента
-      setTimeout(() => {
-        const findTrustedSection = document.getElementById('find-trusted');
-        if (findTrustedSection) {
-          findTrustedSection.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-        }
-      }, 100);
-    });
+    if (this.router.url !== '/') {
+      this.router.navigate(['/']).then(() => {
+        this.scrollToSection('find-trusted');
+      });
+    } else {
+      this.scrollToSection('find-trusted');
+    }
   }
 
-scrollToSmartGuides(event: Event) {
+  scrollToSmartGuides(event: Event) {
     event.preventDefault();
     this.closeMenu();
     
-    // Переходим на главную страницу, если не на ней
-    this.router.navigate(['/']).then(() => {
-      // Ждем небольшое время для рендера контента
-      setTimeout(() => {
-        const smartGuidesSection = document.getElementById('smart-guides');
-        if (smartGuidesSection) {
-          smartGuidesSection.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-        }
-      }, 100);
-    });
+    if (this.router.url !== '/') {
+      this.router.navigate(['/']).then(() => {
+        this.scrollToSection('smart-guides');
+      });
+    } else {
+      this.scrollToSection('smart-guides');
+    }
   }
 
+  private scrollToSection(sectionId: string) {
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const headerHeight = 96; // Высота хедера
+        const sectionPosition = section.getBoundingClientRect().top;
+        const offsetPosition = sectionPosition + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  }
 }
