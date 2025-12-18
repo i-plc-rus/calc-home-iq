@@ -172,6 +172,29 @@ export const routes: Routes = [{
     import('./pages/emergency-furnace-repair/emergency-furnace-repair.component')
       .then(m => m.EmergencyFurnaceRepairComponent)
 },
-
+{
+  path: 'w19c',
+  loadComponent: () =>
+    import('./pages/roofers/roofers.component')
+      .then(m => m.RoofersComponent)
+},
+{
+  path: 'roofers',
+  loadComponent: () =>
+    import('./pages/roofers/roofers.component')
+      .then(m => m.RoofersComponent)
+},
+{
+  path: 'w19d',
+  loadComponent: () =>
+    import('./pages/plumbing-companies/plumbing-companies.component')
+      .then(m => m.PlumbingCompaniesComponent)
+},
+{
+  path: 'plumbing-companies',
+loadComponent: () =>
+    import('./pages/plumbing-companies/plumbing-companies.component')
+      .then(m => m.PlumbingCompaniesComponent)
+},
 
 ];
