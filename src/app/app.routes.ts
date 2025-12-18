@@ -229,6 +229,26 @@ loadComponent: () =>
       .then(m => m.PropertyManagersComponent)
 },
 
+{
+  path: 'for-realtors',
+loadComponent: () =>
+    import('./pages/for-realtors/for-realtors.component')
+      .then(m => m.ForRealtorsComponent)
+},
+
+{
+  path: 'contact-us',
+loadComponent: () =>
+    import('./pages/contact-us/contact-us.component')
+      .then(m => m.ContactUsComponent)
+},
+
+{
+  path: 'terms-of-use',
+loadComponent: () =>
+    import('./pages/terms-of-use/terms-of-use.component')
+      .then(m => m.TermsOfUseComponent)
+},
 
 
 ];
