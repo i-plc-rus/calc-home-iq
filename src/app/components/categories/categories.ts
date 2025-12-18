@@ -24,9 +24,9 @@ export class Categories implements AfterViewInit {
   chunkedCategories: Category[][] = [];
 
   categories: Category[] = [
-    { title: 'Mortgage Brokers', description: 'Compare rates...', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View Brokers →' },
-    { title: 'Lawyers', description: 'Legal experts...', image: 'photo-1589829545856-d10d557cf95f.avif', linkText: 'View Lawyers →' },
-    { title: 'Inspectors', description: 'Thorough inspection...', image: 'photo-1585128792020-803d29415281.avif', linkText: 'View Inspectors →' },
+    { title: 'Mortgage Brokers', description: 'Compare rates...', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View Brokers →' , route: '/mortgage-brokers'},
+    { title: 'Lawyers', description: 'Legal experts...', image: 'photo-1589829545856-d10d557cf95f.avif', linkText: 'View Lawyers →' , route: '/real-estate-lawyers'},
+    { title: 'Inspectors', description: 'Thorough inspection...', image: 'photo-1585128792020-803d29415281.avif', linkText: 'View Inspectors →' , route: '/home-inspectors'},
     { title: 'Renovation Companies', description: 'Transform your property...', image: 'photo-1560520031-3a4dc4e9de0c.avif', linkText: 'View Companies →' },
     { title: 'Property Managers', description: 'Professional management...', image: 'photo-1560518883-ce09059eeffa.avif', linkText: 'View Managers →' },
     { title: 'Insurance Brokers', description: 'Top insurance brokers...', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View Brokers →' , route: '/insurance-brokers'},

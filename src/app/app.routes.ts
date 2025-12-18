@@ -197,4 +197,24 @@ loadComponent: () =>
       .then(m => m.PlumbingCompaniesComponent)
 },
 
+{
+  path: 'mortgage-brokers',
+loadComponent: () =>
+    import('./pages/mortgage-brokers/mortgage-brokers.component')
+      .then(m => m.MortgageBrokersComponent)
+},
+{
+  path: 'real-estate-lawyers',
+loadComponent: () =>
+    import('./pages/real-estate-lawyers/real-estate-lawyers.component')
+      .then(m => m.RealEstateLawyersComponent)
+},
+{
+  path: 'home-inspectors',
+loadComponent: () =>
+    import('./pages/home-inspectors/home-inspectors.component')
+      .then(m => m.HomeInspectorsComponent)
+},
+
+
 ];
