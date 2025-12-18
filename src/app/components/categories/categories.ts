@@ -35,6 +35,10 @@ export class Categories implements AfterViewInit {
     { title: 'Electrical Companies', description: 'Licensed electricians', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' , route:'electrical-companies'},
     { title: 'Pest Control', description: 'Protect your home', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' , route:'pest-control'},
     { title: 'Real Estate Appraisal Firms', description: 'Professional appraisers', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' , route:'appraisal-firms'},
+
+    { title: 'Emergency Furnace Repair', description: 'Professional management...', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' , route:'emergency-furnace'},
+    { title: 'Roofers', description: 'Legal experts...', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' , route:'roofers'},
+    { title: 'Plumbing Companies', description: 'Legal experts..', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' , route:'plumbing'},
   ];
 
   constructor() {

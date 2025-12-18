@@ -1,164 +1,177 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [{
-    path: '',
-    //component: Home
-    //loadComponent: () => import('./app').then(m => m.App)
-    loadComponent: () => import('./pages/home/home').then(m => m.Home)
-  },
-  {
-    path: 'w16',    
-    loadComponent: () => import('./components/insurance-brokers/insurance-brokers.component').then(m => m.InsuranceBrokersComponent)
-  },
+  path: '',
+  //component: Home
+  //loadComponent: () => import('./app').then(m => m.App)
+  loadComponent: () => import('./pages/home/home').then(m => m.Home)
+},
+{
+  path: 'w16',
+  loadComponent: () => import('./components/insurance-brokers/insurance-brokers.component').then(m => m.InsuranceBrokersComponent)
+},
 
-  {
-    path: 'insurance-brokers',    
-    loadComponent: () => import('./components/insurance-brokers/insurance-brokers.component').then(m => m.InsuranceBrokersComponent)
-  },
-  
-  { 
-    path: 'w17',
-    loadComponent: () =>       
-      import('./pages/electrical-companies/electrical-companies.component')
-        .then(m => m.ElectricalCompaniesComponent)
-  },
-  { 
-    path: 'electrical-companies',
-    loadComponent: () =>       
-      import('./pages/electrical-companies/electrical-companies.component')
-        .then(m => m.ElectricalCompaniesComponent)
-  },
+{
+  path: 'insurance-brokers',
+  loadComponent: () => import('./components/insurance-brokers/insurance-brokers.component').then(m => m.InsuranceBrokersComponent)
+},
 
-  { 
-    path: 'w18',
-    loadComponent: () =>       
-      import('./pages/pest-control/pest-control')
-        .then(m => m.PestControl)
-  },
-  { 
-    path: 'pest-control',
-    loadComponent: () =>       
-      import('./pages/pest-control/pest-control')
-        .then(m => m.PestControl)
-  },
+{
+  path: 'w17',
+  loadComponent: () =>
+    import('./pages/electrical-companies/electrical-companies.component')
+      .then(m => m.ElectricalCompaniesComponent)
+},
+{
+  path: 'electrical-companies',
+  loadComponent: () =>
+    import('./pages/electrical-companies/electrical-companies.component')
+      .then(m => m.ElectricalCompaniesComponent)
+},
 
-  { 
-    path: 'w19',
-    loadComponent: () =>       
-      import('./pages/appraisal-firms/appraisal-firms.component')
-        .then(m => m.AppraisalFirms)
-  },
-  { 
-    path: 'appraisal-firms',
-    loadComponent: () =>       
-      import('./pages/appraisal-firms/appraisal-firms.component')
-        .then(m => m.AppraisalFirms)
-  },
+{
+  path: 'w18',
+  loadComponent: () =>
+    import('./pages/pest-control/pest-control')
+      .then(m => m.PestControl)
+},
+{
+  path: 'pest-control',
+  loadComponent: () =>
+    import('./pages/pest-control/pest-control')
+      .then(m => m.PestControl)
+},
 
-  { 
-    path: 'w21',
-    loadComponent: () =>       
-      import('./pages/choose-realtor-guide/choose-realtor-guide.component')
-        .then(m => m.ChooseRealtorGuide)
-  },
-  { 
-    path: 'choose-realtor-guide',
-    loadComponent: () =>       
-      import('./pages/choose-realtor-guide/choose-realtor-guide.component')
-        .then(m => m.ChooseRealtorGuide)        
-  },
+{
+  path: 'w19',
+  loadComponent: () =>
+    import('./pages/appraisal-firms/appraisal-firms.component')
+      .then(m => m.AppraisalFirms)
+},
+{
+  path: 'appraisal-firms',
+  loadComponent: () =>
+    import('./pages/appraisal-firms/appraisal-firms.component')
+      .then(m => m.AppraisalFirms)
+},
 
-  { 
-    path: 'w22',
-    loadComponent: () =>       
-      import('./pages/mortgage-strategies/mortgage-strategies.component')
-        .then(m => m.MortgageStrategies)
-  },
-  { 
-    path: 'mortgage-strategies',
-    loadComponent: () =>       
-      import('./pages/mortgage-strategies/mortgage-strategies.component')
-        .then(m => m.MortgageStrategies)  
-  },
-{ 
-    path: 'w23',
-    loadComponent: () =>       
-      import('./pages/mortgage-penalties/mortgage-penalties.component')
-        .then(m => m.MortgagePenaltiesComponent)
-  },
-  { 
-    path: 'mortgage-penalties',
-    loadComponent: () =>       
-      import('./pages/mortgage-penalties/mortgage-penalties.component')
-        .then(m => m.MortgagePenaltiesComponent)
-  },
+{
+  path: 'w21',
+  loadComponent: () =>
+    import('./pages/choose-realtor-guide/choose-realtor-guide.component')
+      .then(m => m.ChooseRealtorGuide)
+},
+{
+  path: 'choose-realtor-guide',
+  loadComponent: () =>
+    import('./pages/choose-realtor-guide/choose-realtor-guide.component')
+      .then(m => m.ChooseRealtorGuide)
+},
 
-
-  { 
-    path: 'w24',
-    loadComponent: () =>       
-      import('./pages/legal-fees/legal-fees.component')
-        .then(m => m.LegalFeesComponent)
-  },
-  { 
-    path: 'legal-fees',
-    loadComponent: () =>       
-      import('./pages/legal-fees/legal-fees.component')
-        .then(m => m.LegalFeesComponent)
-  },
-
-  { 
-    path: 'w25',
-    loadComponent: () =>       
-      import('./pages/home-insurance/home-insurance.component')
-        .then(m => m.HomeInsuranceComponent)
-  },
-  { 
-    path: 'home-insurance',
-    loadComponent: () =>       
-      import('./pages/home-insurance/home-insurance.component')
-        .then(m => m.HomeInsuranceComponent)
-  },
+{
+  path: 'w22',
+  loadComponent: () =>
+    import('./pages/mortgage-strategies/mortgage-strategies.component')
+      .then(m => m.MortgageStrategies)
+},
+{
+  path: 'mortgage-strategies',
+  loadComponent: () =>
+    import('./pages/mortgage-strategies/mortgage-strategies.component')
+      .then(m => m.MortgageStrategies)
+},
+{
+  path: 'w23',
+  loadComponent: () =>
+    import('./pages/mortgage-penalties/mortgage-penalties.component')
+      .then(m => m.MortgagePenaltiesComponent)
+},
+{
+  path: 'mortgage-penalties',
+  loadComponent: () =>
+    import('./pages/mortgage-penalties/mortgage-penalties.component')
+      .then(m => m.MortgagePenaltiesComponent)
+},
 
 
-  { 
-    path: 'w26',
-    loadComponent: () =>       
-      import('./pages/landlord-insurance/landlord-insurance.component')
-        .then(m => m.LandlordInsuranceComponent)
-  },
-  { 
-    path: 'landlord-insurance',
-    loadComponent: () =>       
-      import('./pages/landlord-insurance/landlord-insurance.component')
-        .then(m => m.LandlordInsuranceComponent)
-  },
+{
+  path: 'w24',
+  loadComponent: () =>
+    import('./pages/legal-fees/legal-fees.component')
+      .then(m => m.LegalFeesComponent)
+},
+{
+  path: 'legal-fees',
+  loadComponent: () =>
+    import('./pages/legal-fees/legal-fees.component')
+      .then(m => m.LegalFeesComponent)
+},
 
-  { 
-    path: 'w31',
-    loadComponent: () =>       
-      import('./pages/about/about.component')
-        .then(m => m.AboutComponent)
-  },
-  { 
-    path: 'about',
-    loadComponent: () =>       
-      import('./pages/about/about.component')
-        .then(m => m.AboutComponent)
-  },
+{
+  path: 'w25',
+  loadComponent: () =>
+    import('./pages/home-insurance/home-insurance.component')
+      .then(m => m.HomeInsuranceComponent)
+},
+{
+  path: 'home-insurance',
+  loadComponent: () =>
+    import('./pages/home-insurance/home-insurance.component')
+      .then(m => m.HomeInsuranceComponent)
+},
 
-  { 
-    path: 'w37',
-    loadComponent: () =>       
-      import('./pages/privacy/privacy.component')
-        .then(m => m.PrivacyComponent)
-  },
-  { 
-    path: 'privacy',
-    loadComponent: () =>       
-      import('./pages/privacy/privacy.component')
-        .then(m => m.PrivacyComponent)
-  },
-  
+
+{
+  path: 'w26',
+  loadComponent: () =>
+    import('./pages/landlord-insurance/landlord-insurance.component')
+      .then(m => m.LandlordInsuranceComponent)
+},
+{
+  path: 'landlord-insurance',
+  loadComponent: () =>
+    import('./pages/landlord-insurance/landlord-insurance.component')
+      .then(m => m.LandlordInsuranceComponent)
+},
+
+{
+  path: 'w31',
+  loadComponent: () =>
+    import('./pages/about/about.component')
+      .then(m => m.AboutComponent)
+},
+{
+  path: 'about',
+  loadComponent: () =>
+    import('./pages/about/about.component')
+      .then(m => m.AboutComponent)
+},
+
+{
+  path: 'w37',
+  loadComponent: () =>
+    import('./pages/privacy/privacy.component')
+      .then(m => m.PrivacyComponent)
+},
+{
+  path: 'privacy',
+  loadComponent: () =>
+    import('./pages/privacy/privacy.component')
+      .then(m => m.PrivacyComponent)
+},
+
+{
+  path: 'w19b',
+  loadComponent: () =>
+    import('./pages/emergency-furnace-repair/emergency-furnace-repair.component')
+      .then(m => m.EmergencyFurnaceRepairComponent)
+},
+{
+  path: 'emergency-furnace',
+  loadComponent: () =>
+    import('./pages/emergency-furnace-repair/emergency-furnace-repair.component')
+      .then(m => m.EmergencyFurnaceRepairComponent)
+},
+
 
 ];
