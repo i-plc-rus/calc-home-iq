@@ -216,5 +216,19 @@ loadComponent: () =>
       .then(m => m.HomeInspectorsComponent)
 },
 
+{
+  path: 'renovation-companies',
+loadComponent: () =>
+    import('./pages/renovation-companies/renovation-companies.component')
+      .then(m => m.RenovationCompaniesComponent)
+},
+{
+  path: 'property-managers',
+loadComponent: () =>
+    import('./pages/property-managers/property-managers.component')
+      .then(m => m.PropertyManagersComponent)
+},
+
+
 
 ];
