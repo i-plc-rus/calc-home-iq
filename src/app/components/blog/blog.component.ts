@@ -1,0 +1,158 @@
+import { CommonModule } from '@angular/common';
+import { Component, ElementRef, ViewChild, HostListener, AfterViewInit, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+export interface BlogPost {
+  title: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  route?: string;
+}
+
+@Component({
+  selector: 'app-blog',
+  imports: [CommonModule, RouterLink],
+  templateUrl: './blog.component.html',
+  styleUrl: './blog.component.scss',
+})
+export class BlogComponent implements OnInit, AfterViewInit {
+  
+  @ViewChild('smartGuides') ratesSection!: ElementRef;
+
+  currentIndex = 0;
+  chunkedPosts: BlogPost[][] = [];
+
+  blogPosts: BlogPost[] = [
+    {
+      title: 'How to Choose a Realtor in Calgary',
+      excerpt: 'Learn what to look for when selecting the right real estate professional...',
+      image: 'photo-1560518883-ce09059eeffa (1).avif',
+      category: 'Buying Guide',
+      route: '/choose-realtor-guide'
+    },
+    {
+      title: 'Best Mortgage Strategies in 2025',
+      excerpt: 'Current market trends and smart financing approaches for home buyers...',
+      image: 'photo-1560520031-3a4dc4e9de0c.avif',
+      category: 'Financing',
+      route: '/mortgage-strategies'
+    },
+    {
+      title: 'Legal Fees & Penalties Explained',
+      excerpt: 'Understanding closing costs and potential penalties in real estate transactions...',
+      image: 'photo-1560448204-603b3fc33ddc.avif',
+      category: 'Legal',
+      route: '/mortgage-penalties'
+    },
+    // Добавьте больше постов для слайдера 3x1 + 3x1
+    {
+      title: 'Legal Fees Explained',
+      excerpt: 'Legal Fees Explained...',
+      image: 'photo-1518780664697-55e3ad937233.avif',
+      category: 'Selling Guide',
+      route: '/legal-fees'
+    },
+    {
+      title: 'Home Insurance Explained',
+      excerpt: 'Home Insurance Explained...',
+      image: 'photo-1560518883-ce09059eeffa.avif',
+      category: 'Investing',
+      route: '/home-insurance'
+    },
+    {
+      title: 'Home Insurance for Rental Properties',
+      excerpt: 'Home Insurance for Rental Properties...',
+      image: 'photo-1560518883-ce09059eeffa.avif',
+      category: 'Buying Guide',
+      route: '/landlord-insurance'
+    },
+    // Еще 3 поста для второго слайда
+    // {
+    //   title: 'Understanding Property Taxes',
+    //   excerpt: 'Complete guide to property tax calculations and payment schedules...',
+    //   image: 'photo-1554224155-6726b3ff858f.avif',
+    //   category: 'Financing',
+    //   route: '/property-taxes-guide'
+    // },
+    // {
+    //   title: 'Negotiation Strategies for Buyers',
+    //   excerpt: 'Expert tips on negotiating the best price for your dream home...',
+    //   image: 'photo-1560518883-ce09059eeffa.avif',
+    //   category: 'Buying Guide',
+    //   route: '/negotiation-strategies'
+    // },
+    // {
+    //   title: 'Real Estate Market Trends 2025',
+    //   excerpt: 'Analysis of current market conditions and future predictions...',
+    //   image: 'photo-1560520031-3a4dc4e9de0c.avif',
+    //   category: 'Market',
+    //   route: '/market-trends-2025'
+    // }
+  ];
+
+  constructor() {}
+
+  ngOnInit() {
+    this.chunkBlogPosts();
+  }
+
+  chunkBlogPosts() {
+    const size = 3; // 3 карточки на слайд
+    this.chunkedPosts = [];
+
+    for (let i = 0; i < this.blogPosts.length; i += size) {
+      this.chunkedPosts.push(this.blogPosts.slice(i, i + size));
+    }
+  }
+
+  nextSlide() {
+    if (this.currentIndex < this.chunkedPosts.length - 1) {
+      this.currentIndex++;
+    } else {
+      // Loop back to start
+      this.currentIndex = 0;
+    }
+  }
+
+  prevSlide() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    } else {
+      // Loop to end
+      this.currentIndex = this.chunkedPosts.length - 1;
+    }
+  }
+
+  goTo(index: number) {
+    this.currentIndex = index;
+  }
+
+  // Обработчик якорных ссылок
+  @HostListener('window:hashchange', ['$event'])
+  onHashChange(event: HashChangeEvent) {
+    this.scrollToHash();
+  }
+
+  ngAfterViewInit() {
+    // Проверяем хэш при загрузке компонента
+    setTimeout(() => {
+      this.scrollToHash();
+    }, 100);
+  }
+
+  private scrollToHash() {
+    if (window.location.hash === '#smart-guides') {
+      this.scrollToSection();
+    }
+  }
+
+  scrollToSection() {
+    if (this.ratesSection) {
+      this.ratesSection.nativeElement.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  }
+}
