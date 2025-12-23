@@ -24,12 +24,12 @@ export class Categories implements AfterViewInit {
   chunkedCategories: Category[][] = [];
 
   categories: Category[] = [
-    { title: 'Mortgage Brokers', description: 'Compare rates and find the best financing options for your home.', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View Brokers →' , route: '/mortgage-brokers'},
-    { title: 'Lawyers', description: 'Legal experts for contracts, titles, and smooth real estate transactions.', image: 'photo-1589829545856-d10d557cf95f.avif', linkText: 'View Lawyers →' , route: '/real-estate-lawyers'},
-    { title: 'Inspectors', description: 'Thorough home inspections to identify issues before you buy.', image: 'photo-1585128792020-803d29415281.avif', linkText: 'View Inspectors →' , route: '/home-inspectors'},
-    { title: 'Renovation Companies', description: 'Transform your property with trusted renovation and remodeling experts.', image: 'photo-1560520031-3a4dc4e9de0c.avif', linkText: 'View Companies →', route: '/renovation-companies' },
-    { title: 'Property Managers', description: 'Professional management for rental properties and investment units.', image: 'photo-1560518883-ce09059eeffa.avif', linkText: 'View Managers →' , route: '/property-managers'},
-    { title: 'Insurance Brokers', description: 'Top insurance brokers...', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View Brokers →' , route: '/insurance-brokers'},
+    { title: 'Mortgage Brokers', description: 'Compare rates and find the best financing options for your home.', image: '1766491444_694a853435756.png', linkText: 'View Brokers →' , route: '/mortgage-brokers'},
+    { title: 'Lawyers', description: 'Legal experts for contracts, titles, and smooth real estate transactions.', image: '1766491793_694a86913a220.png', linkText: 'View Lawyers →' , route: '/real-estate-lawyers'},
+    { title: 'Inspectors', description: 'Thorough home inspections to identify issues before you buy.', image: '1766491960_694a87385b92d.png', linkText: 'View Inspectors →' , route: '/home-inspectors'},
+    { title: 'Renovation Companies', description: 'Transform your property with trusted renovation and remodeling experts.', image: '1766492143_694a87ef2e43e.png', linkText: 'View Companies →', route: '/renovation-companies' },
+    { title: 'Property Managers', description: 'Professional management for rental properties and investment units.', image: '1766492237_694a884d8f520.png', linkText: 'View Managers →' , route: '/property-managers'},
+    { title: 'Insurance Brokers', description: 'Top insurance brokers...', image: '1766492360_694a88c89a938.png', linkText: 'View Brokers →' , route: '/insurance-brokers'},
 
     /* NEW */
     { title: 'Electrical Companies', description: 'Licensed electricians', image: 'photo-1554224155-6726b3ff858f.avif', linkText: 'View →' , route:'electrical-companies'},

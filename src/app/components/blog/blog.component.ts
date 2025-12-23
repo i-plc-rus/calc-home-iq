@@ -26,22 +26,22 @@ export class BlogComponent implements OnInit, AfterViewInit {
   blogPosts: BlogPost[] = [
     {
       title: 'How to Choose a Realtor in Calgary',
-      excerpt: 'Learn what to look for when selecting the right real estate professional...',
-      image: 'photo-1560518883-ce09059eeffa (1).avif',
+      excerpt: 'Learn what to look for when selecting the right real estate professional.',
+      image: '1766492905_694a8ae9f031b.png',
       category: 'Buying Guide',
       route: '/choose-realtor-guide'
     },
     {
       title: 'Best Mortgage Strategies in 2025',
-      excerpt: 'Current market trends and smart financing approaches for home buyers...',
-      image: 'photo-1560520031-3a4dc4e9de0c.avif',
+      excerpt: 'Current market trends and smart financing approaches for home buyers.',
+      image: '1766493030_694a8b660598d.png',
       category: 'Financing',
       route: '/mortgage-strategies'
     },
     {
       title: 'Legal Fees & Penalties Explained',
-      excerpt: 'Understanding closing costs and potential penalties in real estate transactions...',
-      image: 'photo-1560448204-603b3fc33ddc.avif',
+      excerpt: 'Understanding closing costs and potential penalties in real estate transactions.',
+      image: '1766493469_694a8d1d67a3a.png',
       category: 'Legal',
       route: '/mortgage-penalties'
     },
