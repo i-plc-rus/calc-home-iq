@@ -1,0 +1,183 @@
+<div class="calculator-container">
+  <h1>Canadian Mortgage Calculator</h1>
+  
+  <form [formGroup]="mortgageForm" (ngSubmit)="calculateMortgage()" class="mortgage-form">
+    
+    <div class="form-section">
+      <h3>Basic Information</h3>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Home Price (CAD)</label>
+          <input type="number" formControlName="homePrice" min="1" step="1000">
+          <div class="hint">Minimum down payment: {{ getMinDownPayment() | currency:'CAD':'symbol':'1.0-0' }}</div>
+        </div>
+        
+        <div class="form-group">
+          <label>Down Payment (CAD)</label>
+          <input type="number" formControlName="downPaymentAmount" min="0" step="1000">
+          <div class="hint">{{ mortgageForm.get('downPaymentPercent')?.value || 0 }}% of home price</div>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Down Payment (%)</label>
+          <input type="range" formControlName="downPaymentPercent" min="5" max="100" step="0.5">
+          <div class="slider-value">{{ mortgageForm.get('downPaymentPercent')?.value || 0 }}%</div>
+          <div *ngIf="mortgageForm.get('downPaymentPercent')?.value < 20" class="warning">
+            CMHC Insurance Required ({{ paymentResults.cmhcInsurance | currency:'CAD':'symbol':'1.0-0' }})
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h3>Mortgage Terms</h3>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Amortization Period (Years)</label>
+          <input type="number" formControlName="amortizationYears" 
+                 [min]="1" [max]="getMaxAmortization()" step="1">
+          <div class="hint">Max: {{ getMaxAmortization() }} years for down payment < 20%</div>
+        </div>
+        
+        <div class="form-group">
+          <label>Mortgage Term (Years)</label>
+          <select formControlName="mortgageTerm">
+            <option value="1">1 Year</option>
+            <option value="2">2 Years</option>
+            <option value="3">3 Years</option>
+            <option value="4">4 Years</option>
+            <option value="5">5 Years</option>
+            <option value="7">7 Years</option>
+            <option value="10">10 Years</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Interest Rate (%)</label>
+          <input type="number" formControlName="interestRate" min="0.1" max="100" step="0.01">
+        </div>
+        
+        <div class="form-group">
+          <label>Payment Frequency</label>
+          <select formControlName="paymentFrequency">
+            <option *ngFor="let freq of paymentFrequencies" [value]="freq.value">
+              {{ freq.label }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h3>Additional Information</h3>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Province</label>
+          <select formControlName="propertyLocation">
+            <option *ngFor="let province of provinces" [value]="province">
+              {{ province }}
+            </option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Annual Property Tax (CAD)</label>
+          <input type="number" formControlName="annualPropertyTax" min="0" step="100">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Annual Heating Cost (CAD)</label>
+          <input type="number" formControlName="annualHeatingCost" min="0" step="100">
+        </div>
+        
+        <div class="form-group">
+          <label>Monthly Condo Fees (CAD)</label>
+          <input type="number" formControlName="monthlyCondoFees" min="0" step="50">
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="mortgageForm.invalid">
+        Calculate Mortgage
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="resetForm()">
+        Reset Form
+      </button>
+    </div>
+  </form>
+  
+  <div *ngIf="paymentResults.paymentAmount > 0" class="results-section">
+    <h2>Calculation Results</h2>
+    
+    <div class="summary-cards">
+      <div class="summary-card">
+        <h4>Periodic Payment</h4>
+        <div class="amount">{{ paymentResults.paymentAmount | currency:'CAD':'symbol':'1.2-2' }}</div>
+        <div class="subtext">{{ mortgageForm.get('paymentFrequency')?.value | titlecase }}</div>
+      </div>
+      
+      <div class="summary-card">
+        <h4>Total Loan Amount</h4>
+        <div class="amount">{{ paymentResults.totalPrincipal | currency:'CAD':'symbol':'1.0-0' }}</div>
+        <div *ngIf="paymentResults.cmhcInsurance > 0" class="subtext">
+          Including CMHC: {{ paymentResults.cmhcInsurance | currency:'CAD':'symbol':'1.0-0' }}
+        </div>
+      </div>
+      
+      <div class="summary-card">
+        <h4>Total Interest</h4>
+        <div class="amount">{{ paymentResults.totalInterest | currency:'CAD':'symbol':'1.0-0' }}</div>
+        <div class="subtext">{{ (paymentResults.totalInterest / paymentResults.totalPrincipal * 100).toFixed(1) }}% of loan</div>
+      </div>
+      
+      <div class="summary-card">
+        <h4>Total Cost</h4>
+        <div class="amount">{{ paymentResults.totalCost | currency:'CAD':'symbol':'1.0-0' }}</div>
+        <div class="subtext">Over {{ mortgageForm.get('amortizationYears')?.value }} years</div>
+      </div>
+    </div>
+    
+    <div class="chart-container">
+      <h3>Mortgage Payoff Timeline</h3>
+      <canvas baseChart
+              [data]="chartData"
+              [options]="chartOptions"
+              >
+      </canvas>
+    </div>
+    
+    <div class="amortization-table" *ngIf="amortizationSchedule.length > 0">
+      <h3>Amortization Schedule (First 12 Periods)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Payment</th>
+            <th>Principal</th>
+            <th>Interest</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of amortizationSchedule.slice(0, 12)">
+            <td>{{ entry.period }}</td>
+            <td>{{ entry.payment | currency:'CAD':'symbol':'1.2-2' }}</td>
+            <td>{{ entry.principal | currency:'CAD':'symbol':'1.2-2' }}</td>
+            <td>{{ entry.interest | currency:'CAD':'symbol':'1.2-2' }}</td>
+            <td>{{ entry.balance | currency:'CAD':'symbol':'1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -250,5 +250,14 @@ loadComponent: () =>
       .then(m => m.TermsOfUseComponent)
 },
 
+{
+  path: 'mortgage-payment-calculator-canada',
+loadComponent: () =>
+    import('./pages/mortgage-payment-calculator-canada/mortgage-payment-calculator-canada.component')
+      .then(m => m.MortgageCalculatorCanadaComponent)
+},
+
+
+
 
 ];
